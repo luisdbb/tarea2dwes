@@ -9,8 +9,8 @@ import com.dawes.servicios.*;
 import com.dawes.util.InvernaderoServiciosFactory;
 import com.dawes.util.MySqlDAOFactory;
 import com.dawes.util.Utilidades;
-import com.dawes.dao.*;
-import com.dawes.daoImpl.EjemplarDAOImpl;
+//import com.dawes.dao.*;
+//import com.dawes.daoImpl.EjemplarDAOImpl;
 
 public class InvernaderoFachada {
 	private static InvernaderoFachada portal;

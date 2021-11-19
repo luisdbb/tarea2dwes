@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import com.dawes.daoImpl.EjemplarDAOImpl;
 import com.dawes.modelo.EjemplarVO;
+import com.dawes.modelo.LocalizacionVO;
 import com.dawes.servicios.ServicioEjemplar;
 import com.dawes.util.MySqlDAOFactory;
 
@@ -50,7 +51,18 @@ public class ServicioEjemplarImpl implements ServicioEjemplar {
 	}
 
 	public ArrayList<EjemplarVO> findByFechaPlantacion(Date fecha) {
+		
+		
+		
 		return ejemplarDAO.findByFechaPlantacion(fecha);
+	}
+
+
+	
+	public int plantarEjemplar(EjemplarVO ej, LocalizacionVO loc, Date fecha) {
+		
+		
+		return ejemplarDAO.plantarEjemplar(ej, loc, fecha);
 	}
 
 

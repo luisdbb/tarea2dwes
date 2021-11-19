@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import com.dawes.modelo.EjemplarVO;
+import com.dawes.modelo.LocalizacionVO;
 
 
 public interface EjemplarDAO {
@@ -17,6 +18,7 @@ public interface EjemplarDAO {
 	ArrayList<EjemplarVO> findByFechaCompra(Date fecha);
 	ArrayList<EjemplarVO> findByFechaPlantacion(Date fecha);
 	List<EjemplarVO> findAll();
+	int plantarEjemplar(EjemplarVO ej, LocalizacionVO loc, Date fecha);
 	
 }
 	

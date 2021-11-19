@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.dawes.dao.EjemplarDAO;
 import com.dawes.modelo.EjemplarVO;
+import com.dawes.modelo.LocalizacionVO;
 
 public class EjemplarDAOImpl implements EjemplarDAO {
 
@@ -87,5 +88,17 @@ public class EjemplarDAOImpl implements EjemplarDAO {
 		return null;
 	}
 
-
+	public int plantarEjemplar(EjemplarVO ej, LocalizacionVO loc, Date fecha) {
+		try {
+			ps = con.prepareStatement("update ejemplares set fechaplantacion= ? , idlocalizacion=? where id = ?");
+			ps.setDate(1, fecha);
+			ps.setInt(2, loc.getId());
+			ps.setInt(3, ej.getId());
+			return ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			System.out.println("Error al plantar ejemplar " + e.getMessage());
+			return -1;
+		}
+	}
 }
