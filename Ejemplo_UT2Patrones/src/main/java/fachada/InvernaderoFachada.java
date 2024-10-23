@@ -9,14 +9,12 @@ import com.dawes.servicios.*;
 import com.dawes.util.InvernaderoServiciosFactory;
 import com.dawes.util.MySqlDAOFactory;
 import com.dawes.util.Utilidades;
-//import com.dawes.dao.*;
-//import com.dawes.daoImpl.EjemplarDAOImpl;
 
 public class InvernaderoFachada {
 	private static InvernaderoFachada portal;
 	
 	MySqlDAOFactory factoriaDAO = MySqlDAOFactory.getCon();
-	InvernaderoServiciosFactory factoriaServicios = InvernaderoServiciosFactory.getServivios(); 
+	InvernaderoServiciosFactory factoriaServicios = InvernaderoServiciosFactory.getServicios(); 
 		
 	ServicioEjemplar ejServ = factoriaServicios.getServiciosEjemplar();
 	ServicioPlanta plantaServ = factoriaServicios.getServiciosPlanta();
@@ -157,12 +155,12 @@ public class InvernaderoFachada {
                 case 3:
                     System.out.println("Leer detalles de Ejemplar:");
                     System.out.println("Seleccione el id del ejemplar:");
-                    mostrarEjemplares();
+                    ejServ.mostrarEjemplares();
                     int idejemplar = 0;
                     idejemplar = in.nextInt();
                     try {
                         System.out.println("Los detalles del ejemplar con id=" + idejemplar + " son:");
-                        verDetallesEjemplar(idejemplar);
+                        ejServ.verDetallesEjemplar(ejServ.findById(idejemplar));
 
                     } catch (Exception e) {
                         System.out.println("Se ha producido una excepcion: " + e.getMessage());
@@ -171,11 +169,11 @@ public class InvernaderoFachada {
                 case 4:
                     System.out.println("Modificar datos de Ejemplar");
                     System.out.println("Seleccione el id del ejemplar:");
-                    mostrarEjemplares();
-                    int idejemplar = 0;
+                    ejServ.mostrarEjemplares();
+                    idejemplar = 0;
                     idejemplar = in.nextInt();
                     try {
-                        modificarEjemplar(idejemplar);
+                        ejServ.modificar(ejServ.findById(idejemplar));
                         System.out.println("El ejemplar con id=" + idejemplar + " se ha modificado en la BD.");
                     } catch (Exception e) {
                         System.out.println("Se ha producido una excepcion: " + e.getMessage());
@@ -184,11 +182,11 @@ public class InvernaderoFachada {
                 case 5:
                     System.out.println("Eliminar Ejemplar:");
                     System.out.println("Seleccione el id del ejemplar:");
-                    mostrarEjemplares();
-                    int idejemplar = 0;
+                    ejServ.mostrarEjemplares();
+                    idejemplar = 0;
                     idejemplar = in.nextInt();
                     try {
-                        eliminarEjemplar(idejemplar);
+                        ejServ.eliminar(ejServ.findById(idejemplar));
                         System.out.println("El ejemplar con id=" + idejemplar + " se ha eliminado de la BD.");
                     } catch (Exception e) {
                         System.out.println("Se ha producido una excepcion: " + e.getMessage());
@@ -221,13 +219,14 @@ public class InvernaderoFachada {
                     switch (filtroPlantas) {
                         case 0:
                             System.out.println("Seleccionados todas las plantas:");
-                            plantas = todasPlantas();
+                            plantas = plantaServ.todasPlantas();
                             for (PlantaVO p : plantas) {
                                 System.out.println(p);
                             }
                             break;
                         case 1:
-                            plantas = filtrarPlantaPorNombre();
+                            String nombre="";
+                            plantas = plantaServ.filtrarPlantaPorNombre(nombre);
                             System.out.println("Seleccionados las plantas:");
                             for (PlantaVO p : plantas) {
                                 System.out.println(p);
@@ -242,7 +241,7 @@ public class InvernaderoFachada {
                     System.out.println("Crear nueva Planta:");
                     try {
                         PlantaVO p = PlantaVO.nuevaPlanta();
-                        insertarPlanta(p);
+                        plantaServ.insertar(p);
                         System.out.println("La planta " + p.toString() + " se ha creado en la BD.");
                     } catch (Exception e) {
                         System.out.println("Se ha producido una excepcion: " + e.getMessage());
@@ -251,12 +250,12 @@ public class InvernaderoFachada {
                 case 3:
                     System.out.println("Leer detalles de Planta:");
                     System.out.println("Seleccione el id de la planta");
-                    mostrarPlantas();
+                    plantaServ.todasPlantas();
                     int idplanta = 0;
                     idplanta = in.nextInt();
                     try {
                         System.out.println("Los detalles de la planta con id=" + idplanta + " son:");
-                        verDetallesPlanta(idplanta);
+                        plantaServ.verDetallesPlanta(plantaServ.findById(idplanta));
 
                     } catch (Exception e) {
                         System.out.println("Se ha producido una excepcion: " + e.getMessage());
@@ -265,11 +264,11 @@ public class InvernaderoFachada {
                 case 4:
                     System.out.println("Modificar datos de Planta");
                     System.out.println("Seleccione el id de la planta:");
-                    mostrarPlantas();
-                    int idplanta = 0;
+                    plantaServ.mostrarPlantas();
+                    idplanta = 0;
                     idplanta = in.nextInt();
                     try {
-                        modificarPlanta(idplanta);
+                        plantaServ.modificar( plantaServ.findById(idplanta));
                         System.out.println("La planta con id=" + idplanta+ " se ha modificado en la BD.");
                     } catch (Exception e) {
                         System.out.println("Se ha producido una excepcion: " + e.getMessage());
@@ -278,11 +277,11 @@ public class InvernaderoFachada {
                 case 5:
                     System.out.println("Eliminar Planta:");
                     System.out.println("Seleccione el id de la planta:");
-                    mostrarPlantas();
-                    int idplanta = 0;
+                    plantaServ.todasPlantas();
+                    idplanta = 0;
                     idplanta = in.nextInt();
                     try {
-                        eliminarPlanta(idplanta);
+                        plantaServ.eliminar( plantaServ.findById(idplanta));
                         System.out.println("La planta con id=" + idplanta + " se ha eliminado de la BD.");
                     } catch (Exception e) {
                         System.out.println("Se ha producido una excepcion: " + e.getMessage());
@@ -315,13 +314,13 @@ public class InvernaderoFachada {
                     switch (filtroLocalizaciones) {
                         case 0:
                             System.out.println("Seleccionados todas las localizaciones:");
-                            localizaciones = todasLocalizaciones();
+                            localizaciones = localServ.todasLocalizaciones();
                             for (LocalizacionVO l : localizaciones) {
                                 System.out.println(l);
                             }
                             break;
                         case 1:
-                            localizaciones = filtrarEjemplarPorLongitudLatitud();
+                            localizaciones = localServ.filtrarEjemplarPorLongitudLatitud();
                             System.out.println("Seleccionados las localizaciones:");
                             for (LocalizacionVO l : localizaciones) {
                                 System.out.println(l);
@@ -345,12 +344,12 @@ public class InvernaderoFachada {
                 case 3:
                     System.out.println("Leer detalles de Localización:");
                     System.out.println("Seleccione el id de la localización");
-                    mostrarLocalizaciones();
+                    localServ.todasLocalizaciones();
                     int idlocalizacion = 0;
                     idlocalizacion = in.nextInt();
                     try {
                         System.out.println("Los detalles de la localizacion con id=" + idlocalizacion + " son:");
-                        verDetallesLocalizacion(idlocalizacion);
+                        localServ.verDetallesLocalizacion(idlocalizacion);
 
                     } catch (Exception e) {
                         System.out.println("Se ha producido una excepcion: " + e.getMessage());
@@ -359,11 +358,11 @@ public class InvernaderoFachada {
                 case 4:
                     System.out.println("Modificar datos de Localización");
                     System.out.println("Seleccione el id de la localización:");
-                    mostrarLocalizaciones();
-                    int idlocalizacion = 0;
+                    localServ.todasLocalizaciones();
+                    idlocalizacion = 0;
                     idlocalizacion = in.nextInt();
                     try {
-                        modificarLocalizacion(idlocalizacion);
+                        localServ.modificar(localServ.findById(idlocalizacion));
                         System.out.println("La localización con id=" + idlocalizacion + " se ha modificado en la BD.");
                     } catch (Exception e) {
                         System.out.println("Se ha producido una excepcion: " + e.getMessage());
@@ -372,11 +371,11 @@ public class InvernaderoFachada {
                 case 5:
                     System.out.println("Eliminar Localizacion:");
                     System.out.println("Seleccione el id de la localizacion:");
-                    mostrarLocalizaciones();
-                    int idlocalizacion = 0;
+                    localServ.todasLocalizaciones();
+                    idlocalizacion = 0;
                     idlocalizacion = in.nextInt();
                     try {
-                        eliminarLocalizacion(idlocalizacion);
+                        localServ.eliminar(localServ.findById(idlocalizacion));
                         System.out.println("La localizacion con id=" + idlocalizacion + " se ha eliminado de la BD.");
                     } catch (Exception e) {
                         System.out.println("Se ha producido una excepcion: " + e.getMessage());
@@ -389,15 +388,15 @@ public class InvernaderoFachada {
     }
 
 	public void insertarLocalizacion(LocalizacionVO l) {
-		LocalizacionDAO.insertar(l);
+		factoriaDAO.getLocalizacionDAO().insertar(l);
 		
 	}
 
-	public void mostrarLocalizacion() {
-		for (LocalizacionVO l : LocalizacionDAOseleccionarTodas()) {
-			System.out.println(l);
-		}
-	}
+//	public void mostrarLocalizacion() {
+//		for (LocalizacionVO l : factoriaDAO.getLocalizacionDAO().seleccionarTodas()) {
+//			System.out.println(l);
+//		}
+//	}
 
 	public void mostrarMenuGestionParcelas() {
         Scanner in = new Scanner(System.in);
@@ -464,47 +463,47 @@ public class InvernaderoFachada {
                         parcelaServ.insertar(p);
                         System.out.println("La parcela " + p.toString() + " se ha creado en la BD.");
                     } catch (Exception e) {
-
+                        System.out.println("Se ha producido una Exception: " +e.getLocalizedMessage());
                     }
                     break;
                 case 3:
                     System.out.println("Leer detalles de Parcela:");
                     System.out.println("Seleccione el id de la parcela");
-                    mostrarParcelas();
+                    parcelaServ.mostrarParcelas();
                     int idparcela = 0;
                     idparcela = in.nextInt();
                     try {
                         System.out.println("Los detalles de la parcela con id=" + idparcela + " son:");
-                        verDetallesParcela(idparcela);
+                        parcelaServ.verDetallesParcela(idparcela);
 
-                    } catch (Exception e) {
-
+                    }catch (Exception e) {
+                        System.out.println("Se ha producido una Exception: " +e.getLocalizedMessage());
                     }
                     break;
                 case 4:
                     System.out.println("Modificar datos de Parcela");
                     System.out.println("Seleccione el id de la parcela:");
-                    mostrarParcelas();
-                    int idparcela = 0;
+                    parcelaServ.mostrarParcelas();
+                    idparcela = 0;
                     idparcela = in.nextInt();
                     try {
-                        modificarParcela(idparcela);
+                        parcelaServ.modificar(parcelaServ.findById(idparcela));
                         System.out.println("La parcela con id=" + idparcela+ " se ha modificado en la BD.");
-                    } catch () {
-
+                    } catch (Exception e) {
+                        System.out.println("Se ha producido una Exception: " +e.getLocalizedMessage());
                     }
                     break;
                 case 5:
                     System.out.println("Eliminar Parcela:");
                     System.out.println("Seleccione el id de la parcela:");
-                    mostrarParcelas();
-                    int idparcela = 0;
+                    parcelaServ.mostrarParcelas();
+                    idparcela = 0;
                     idparcela = in.nextInt();
                     try {
-                        eliminarParcela(idparcela);
+                        parcelaServ.eliminar(parcelaServ.findById(idparcela));
                         System.out.println("La parcela con id=" + idparcela + " se ha eliminado de la BD.");
                     } catch (Exception e) {
-
+                        System.out.println("Se ha producido una Exception: " +e.getLocalizedMessage());
                     }
                     break;
                 case 6:

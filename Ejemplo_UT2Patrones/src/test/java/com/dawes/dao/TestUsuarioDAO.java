@@ -1,8 +1,5 @@
 package com.dawes.dao;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
 import java.time.LocalDate;
 
 import org.junit.FixMethodOrder;
@@ -11,6 +8,9 @@ import org.junit.runners.MethodSorters;
 
 import com.dawes.modelo.UsuarioVO;
 import com.dawes.util.MySqlDAOFactory;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestUsuarioDAO {

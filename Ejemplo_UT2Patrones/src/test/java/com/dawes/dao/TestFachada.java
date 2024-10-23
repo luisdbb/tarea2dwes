@@ -1,14 +1,12 @@
 package com.dawes.dao;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-
 import java.time.LocalDate;
-
-import org.junit.Test;
 
 import com.dawes.modelo.UsuarioVO;
 import com.dawes.servicios.ServicioUsuario;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import org.junit.jupiter.api.Test;
 
 import servicioImpl.ServicioUsuarioImpl;
 

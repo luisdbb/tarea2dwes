@@ -60,6 +60,10 @@ public class ServicioLocalizacionImpl implements ServicioLocalizacion {
 		return null;
 	}
 
+    public ArrayList<LocalizacionVO> todasLocalizaciones() {
+      return (ArrayList<LocalizacionVO>) this.findAll();
+    }
+
 
 
 }

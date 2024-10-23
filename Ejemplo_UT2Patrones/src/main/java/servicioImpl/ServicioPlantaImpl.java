@@ -45,5 +45,13 @@ public class ServicioPlantaImpl implements ServicioPlanta {
 		return null;
 	}
 
+    public ArrayList<PlantaVO> todasPlantas() {
+        return (ArrayList<PlantaVO>) this.findAll();
+    }
+
+    public ArrayList<PlantaVO> filtrarPlantaPorNombre(String nombre) {
+       return this.findByNombre(nombre);
+    }
+
 
 }

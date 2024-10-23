@@ -10,7 +10,7 @@ import servicioImpl.ServicioPlantaImpl;
 public class InvernaderoServiciosFactory {
 	public static InvernaderoServiciosFactory servicios;
 	
-	public static InvernaderoServiciosFactory getServivios() {
+	public static InvernaderoServiciosFactory getServicios() {
 		if (servicios ==null)
 			servicios=new InvernaderoServiciosFactory();
 		return servicios;

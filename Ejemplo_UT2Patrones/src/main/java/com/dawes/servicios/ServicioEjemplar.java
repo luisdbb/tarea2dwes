@@ -3,7 +3,6 @@ package com.dawes.servicios;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import com.dawes.modelo.EjemplarVO;
 import com.dawes.modelo.LocalizacionVO;
@@ -27,6 +26,8 @@ public interface ServicioEjemplar {
 	List<EjemplarVO> findAll();
 	
 	int plantarEjemplar(EjemplarVO ej, LocalizacionVO loc, Date fecha);
+
+    public void mostrarEjemplares();
 	
 
 }

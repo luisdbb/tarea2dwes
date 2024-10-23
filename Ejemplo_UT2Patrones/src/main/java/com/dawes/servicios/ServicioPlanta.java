@@ -20,4 +20,9 @@ public interface ServicioPlanta {
 
 	List<PlantaVO> findAll();
 
+    public ArrayList<PlantaVO> todasPlantas();
+
+    public ArrayList<PlantaVO> filtrarPlantaPorNombre(String nombre);
+
+
 }

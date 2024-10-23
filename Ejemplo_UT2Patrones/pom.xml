@@ -1,17 +1,38 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.dawes</groupId>
-	<artifactId>charo_TEMA2</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<dependencies>
-		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.21</version>
-		</dependency>
-
-	</dependencies>
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.dawes</groupId>
+    <artifactId>tarea2DWES2022</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.21</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.11.3</version>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
+        
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.scala-js</groupId>
+            <artifactId>scalajs-junit-test-runtime_2.10</artifactId>
+            <version>1.0.0-M2</version>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
+    <name>tarea2DWES2022</name>
 </project>

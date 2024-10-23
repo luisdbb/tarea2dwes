@@ -26,4 +26,6 @@ public interface ServicioLocalizacion {
 
 	List<LocalizacionVO> findAll();
 
+    public ArrayList<LocalizacionVO> todasLocalizaciones();
+
 }

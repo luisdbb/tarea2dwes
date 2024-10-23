@@ -24,4 +24,6 @@ public interface ServicioParcela {
 
 	List<ParcelaVO> findAll();
 
+    public void mostrarParcelas();
+
 }

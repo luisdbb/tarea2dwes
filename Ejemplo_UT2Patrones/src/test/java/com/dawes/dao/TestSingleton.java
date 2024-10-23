@@ -1,14 +1,12 @@
 package com.dawes.dao;
-
-import static org.junit.Assert.assertEquals;
-
 import java.time.LocalDate;
 
-import org.junit.Test;
 
 import com.dawes.daoImpl.UsuarioDAOImpl;
 import com.dawes.modelo.UsuarioVO;
 import com.dawes.util.MySqlDAOFactory;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 public class TestSingleton {
 

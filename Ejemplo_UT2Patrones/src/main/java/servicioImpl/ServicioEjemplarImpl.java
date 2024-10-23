@@ -13,57 +13,54 @@ import com.dawes.util.MySqlDAOFactory;
 
 public class ServicioEjemplarImpl implements ServicioEjemplar {
 
-	private MySqlDAOFactory factoria;
-	private EjemplarDAOImpl ejemplarDAO;
+    private MySqlDAOFactory factoria;
+    private EjemplarDAOImpl ejemplarDAO;
 
-	public ServicioEjemplarImpl() {
-		factoria=MySqlDAOFactory.getCon();
-		ejemplarDAO=(EjemplarDAOImpl) factoria.getEjemplarDAO();
-	}
+    public ServicioEjemplarImpl() {
+        factoria = MySqlDAOFactory.getCon();
+        ejemplarDAO = (EjemplarDAOImpl) factoria.getEjemplarDAO();
+    }
 
-	public int insertar(EjemplarVO e) {
-		return ejemplarDAO.insertar(e);
-	}
+    public int insertar(EjemplarVO e) {
+        return ejemplarDAO.insertar(e);
+    }
 
-	public int modificar(EjemplarVO e) {
-		return ejemplarDAO.modificar(e);
-	}
+    public int modificar(EjemplarVO e) {
+        return ejemplarDAO.modificar(e);
+    }
 
-	public int eliminar(EjemplarVO e) {
-		return ejemplarDAO.eliminar(e);
-	}
+    public int eliminar(EjemplarVO e) {
+        return ejemplarDAO.eliminar(e);
+    }
 
-	public EjemplarVO findById(int id) {
-		return ejemplarDAO.findById(id);
-	}
-	
-	public ArrayList<EjemplarVO> findByEdad(int edad) {
-		return ejemplarDAO.findByEdad(edad);
-	}
+    public EjemplarVO findById(int id) {
+        return ejemplarDAO.findById(id);
+    }
 
+    public ArrayList<EjemplarVO> findByEdad(int edad) {
+        return ejemplarDAO.findByEdad(edad);
+    }
 
-	public ArrayList<EjemplarVO> findByFechaCompra(Date fecha) {
-		return ejemplarDAO.findByFechaCompra(fecha);
-	}
+    public ArrayList<EjemplarVO> findByFechaCompra(Date fecha) {
+        return ejemplarDAO.findByFechaCompra(fecha);
+    }
 
-	public List<EjemplarVO> findAll() {
-		return ejemplarDAO.findAll();
-	}
+    public List<EjemplarVO> findAll() {
+        return ejemplarDAO.findAll();
+    }
 
-	public ArrayList<EjemplarVO> findByFechaPlantacion(Date fecha) {
-		
-		
-		
-		return ejemplarDAO.findByFechaPlantacion(fecha);
-	}
+    public ArrayList<EjemplarVO> findByFechaPlantacion(Date fecha) {
+        return ejemplarDAO.findByFechaPlantacion(fecha);
+    }
 
+    public int plantarEjemplar(EjemplarVO ej, LocalizacionVO loc, Date fecha) {
+        return ejemplarDAO.plantarEjemplar(ej, loc, fecha);
+    }
 
-	
-	public int plantarEjemplar(EjemplarVO ej, LocalizacionVO loc, Date fecha) {
-		
-		
-		return ejemplarDAO.plantarEjemplar(ej, loc, fecha);
-	}
-
+    public void mostrarEjemplares() {
+        for(EjemplarVO ej: this.findAll()){
+            System.out.println(""+ej);
+        }
+    }
 
 }
